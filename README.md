@@ -42,6 +42,39 @@ Both designs have simulation waveforms and timing reports. Timing results are sp
 
 ## Simulation Results
 
+
+## Static Timing Analysis
+
+Both FIR architectures were synthesized and implemented
+using Xilinx ISE, followed by post-place-and-route
+static timing analysis.
+
+### Timing Results
+
+| Parameter | Normal FIR | Parallel FIR |
+|-----------|------------|--------------|
+| Maximum Pad-to-Pad Delay | 21.408 ns | 23.234 ns |
+| Maximum Clock-to-Output Delay | 15.269 ns | 21.551 ns |
+| Maximum Input Setup Requirement | 13.061 ns | 4.777 ns |
+
+### Observations
+
+The parallel implementation contains multiple arithmetic
+paths for processing three input samples.
+
+However, the reported Pad-to-Pad delay is higher than
+that of the normal implementation.
+
+These results do not establish that the parallel
+implementation has better timing performance.
+
+The architectures have different input/output structures,
+so a direct comparison of their maximum path delays
+does not establish an overall performance advantage.
+
+All timing values were obtained from Xilinx ISE
+post-place-and-route analysis, without physical FPGA testing.
+
 ### Normal FIR
 ![Normal FIR waveform](docs/normal-fir-waveform.png)
 
